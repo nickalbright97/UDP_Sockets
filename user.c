@@ -63,8 +63,15 @@ int main(int argc, char *argv[])
 
     puts(str);
      
-    if( sscanf("%d %s %d", &num1, op, &num2) != 1) 
+    if( sscanf("%d %s %d", &uNum1, op, &uNum2) != 1) 
         puts("argument error");
+
+    calcMsg -> msgType = 1;
+    calcMsg -> num1 = uNum1;
+    calcMsg -> num2 = uNum2;
+    calcMsg -> operation = op;
+    calcMsg -> result = 0;
+    calcMsg -> name = "Albright_Padilla";
 
    
     serverIP          = argv[1] ;
