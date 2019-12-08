@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
 
     puts(str);
      
-    if( sscanf("%d %s %d", &uNum1, op, &uNum2) != 1) 
+    if( sscanf(str, "%d %s %d", &uNum1, op, &uNum2) != 1) 
         puts("argument error");
 
     calcMsg -> msgType = 1;
