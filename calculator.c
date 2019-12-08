@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------
 PA-04: UDP Socket Programming
-            Calculator program
+            Calculator program (server)
 
 Written By: Team-00
     1- Nick Albright

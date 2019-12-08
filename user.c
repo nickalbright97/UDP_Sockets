@@ -1,6 +1,7 @@
 /*----------------------------------------------------------------------
 PA-04: UDP Socket Programming
-            User program
+            User program (client)
+
 
 Written By: Team-00
     1- Nick Albright
@@ -62,28 +63,32 @@ int main(int argc, char *argv[])
 
     puts(str);
      
+    if( sscanf("%d %s %d", &num1, op, &num2) != 1) 
+        puts("argument error");
+
+   
     serverIP          = argv[1] ;
     port              = (unsigned short) atoi( argv[2] ) ;
 
     /* Allocate a socket */
-	sd = socket( AF_INET, SOCK_DGRAM , 0 ) ;
+	sd = socket( AF_INET, SOCK_DGRAM , 0 );
 	if (sd < 0)
-		err_sys( "Could NOT create socket" ) ;
+		err_sys( "Could NOT create socket" );
     
     // Prepare the server's socket address structure
     struct sockaddr_in srvSkt;	   /* Server's socket structrue  */
     memset( (void *) &srvSkt, 0 , sizeof(srvSkt) );
     srvSkt.sin_family   = AF_INET;
-    srvSkt.sin_port     = htons( port ) ;
+    srvSkt.sin_port     = htons( port );
     if( inet_pton( AF_INET, serverIP, (void *) & srvSkt.sin_addr.s_addr ) != 1 )
     {
       err_sys( "Invalid server IP address" ) ;
     }
 
-    fprintf(stderr , "User sending '%s'\n" , str ) ;
+
     /* must send the \0 at end of msg, too */
     sendto ( sd, (void *) str, strlen(str)+1 , 0 , (SA *) &srvSkt, sizeof(srvSkt)  );
-
+    fprintf("User Albright_Padilla sent this message to the Calculator: %d %s %d\n", sendFD, num1, op, num2);
 
     n = recvfrom ( sd, (void*) timeStr , MAXBUFLEN , 0 , NULL , NULL );
     if ( n <= 0 )
