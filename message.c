@@ -3,7 +3,7 @@
 
 #include "message.h"
 
-char     *myName = "Mohamed Aboutabl" ;
+char     *myName = "Grp12 Albright_Padilla" ;
 
 /*--------------------------------------------------------------------
    Print a Calculator message buffer
